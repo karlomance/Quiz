@@ -1,0 +1,48 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#homepage {
+    background-color: rgb(215, 232, 251);
+    margin-top: 250px;
+    width: 800px;
+    height: 600px;
+    border: 5px solid rgb(54, 139, 219);
+    border-radius: 15px;
+}
+
+#header {
+    padding-top: 150px;
+    height: 500px; 
+}
+#welcome {
+    margin-left: 250px;
+    width: 300px;
+}
+
+#welcome h1 {
+    font-size: 60px;
+}
+#button-start{
+    padding-top: 30px;
+}
+#start-quiz {
+    margin-left: 300px;
+    font-size: 24px;
+    height: 70px;
+    width: 200px;
+}
+
+#footer {
+    margin: 20px;
+    display: flex;
+    justify-content: right;
+}
+#see-results {
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+}
+
