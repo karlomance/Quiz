@@ -1,0 +1,64 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#page {
+    background-color: rgb(215, 232, 251);
+    margin-top: 250px;
+    width: 800px;
+    height: 600px;
+    border: 5px solid rgb(54, 139, 219);
+    border-radius: 15px;
+}
+#header {
+    text-align: center;
+    padding-top: 50px;
+}
+#header h1{
+    font-size: 50px;
+}
+#solutions {
+    display: flex;
+}
+#solutions p {
+    font-size: 24px;
+}
+#first-5-questions {
+    flex: 1;
+    padding-left: 20px;
+}
+#last-5-questions {
+    flex: 1;
+    padding-left: 20px;
+}
+#result {
+    text-align: center;
+}
+#result h2{
+    font-size: 40px;
+}
+#buttons {
+    padding-top: 40px;
+    display: flex;
+}
+#button-back {
+    flex: 1;
+}
+#button-see-results {
+    text-align: right;
+    flex: 1;
+
+}
+#button-back button {
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+    margin-left: 20px;
+}
+#button-see-results button {
+    margin-right: 20px;
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+}
