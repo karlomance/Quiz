@@ -1,0 +1,72 @@
+#container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+#page {
+    margin-top: 150px;
+    border: 5px solid rgb(54, 139, 219);
+    border-radius: 15px;;
+    width: 1400px;
+    margin-bottom: 150px;
+}
+#header {
+    display: flex;
+}
+#title-div {
+    flex: 5;
+    padding-top: 40px;
+
+}
+#title {
+    font-size: 50px;
+}
+#dropdown {
+    flex: 1;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+#result-1 {
+    display: flex;
+    padding: 20px;
+    font-size: 24px;
+}
+
+#username {
+    flex: 1;
+}
+#date {
+    flex: 3;
+}
+#points {
+    flex: 1;
+}
+
+#footer {
+    display: flex;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+#btn-back-div {
+    flex: 1;
+    text-align: left;
+}
+#btn-back {
+    margin-left: 20px;
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+}
+#btn-new-quiz-div {
+    flex: 1;
+    text-align: right;
+}
+#btn-new-quiz {
+    margin-right: 20px;
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+}

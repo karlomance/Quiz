@@ -1,6 +1,9 @@
 <div id="container">
     <div id="quiz-container">
         <div id="header">
+            <div id="username">
+                <p>Username: Karlo</p>
+            </div>
             <h1>Quiz</h1>
             <p>You have to answer all this questions right !</p>
         </div>
@@ -13,9 +16,17 @@
                 <input type="checkbox"><span>second option</span><br>
                 <input type="checkbox"><span>third option</span>
             </div>
-            <div id="is-correct">
-                <span class="glyphicon glyphicon-ok"></span><p>Correct</p>
+            <div id="buttons-witch-question">
+                <div id="button-previous-div">
+                    <button id="button-previous" class="btn btn-default">Previous</button>
+                </div>
+                <div id="button-next-div">
+                    <button id="button-next" class="btn btn-default">Next</button>
+                </div>
             </div>
+            <!-- <div id="is-correct">
+                <span class="glyphicon glyphicon-ok"></span><p>Correct</p>
+            </div> -->
    
         </div>
         <hr>
@@ -23,7 +34,7 @@
             <button class="btn btn-primary">Submit</button>
         </div>
         <div id="footer">
-            <button class="btn btn-primary">Back</button>
+            <button class="btn btn-danger">Back</button>
         </div>
     </div>
 </div>

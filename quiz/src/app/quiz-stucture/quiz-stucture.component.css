@@ -13,10 +13,13 @@
     width: 1400px;
     height: 800px;
 }
+#username {
+    text-align: right;
+    margin-right: 20px;
+}
 
 #header {
     height: 180px;
-    padding-top: 40px;
 }
 #header h1 {
     font-size: 60px;
@@ -27,8 +30,7 @@
 }
 
 #questions {
-    padding-top: 20px;
-    height: 360px;
+    height: 340px;
 }
 #question-number {
     text-align: left;
@@ -51,8 +53,34 @@
     margin-left: 10px;
 }
 
+#buttons-witch-question {
+    padding-top: 50px;
+    display: flex;
+}
+#button-previous-div{
+    flex: 1;
+    text-align: left;
+}
+#button-previous{
+    margin-left: 20px;
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+}
+#button-next-div{
+    flex: 1;
+    text-align: right;
+    margin-right: 20px;
+}
+#button-next{
+    margin-left: 20px;
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+}
 
-#is-correct {
+
+/* #is-correct {
     padding-top: 50px;
     padding-right: 60px;
     color: green;
@@ -60,7 +88,8 @@
     font-size: 24px;
     display: flex;
     justify-content: right;
-}
+} */
+
 #is-correct span {
     margin-right: 3px;
 }
