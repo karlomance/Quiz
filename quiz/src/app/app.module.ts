@@ -9,6 +9,16 @@ import { QuizStuctureComponent } from './quiz-stucture/quiz-stucture.component';
 import { SubmitResultComponent } from './submit-result/submit-result.component';
 import { ResultsComponent } from './results/results.component';
 
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: '', component: HomepageComponent},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'quiz', component: QuizStuctureComponent},
+  {path: 'your-result', component: SubmitResultComponent},
+  {path: 'results', component: ResultsComponent}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +30,8 @@ import { ResultsComponent } from './results/results.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
