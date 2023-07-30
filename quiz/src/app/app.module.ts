@@ -8,6 +8,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { QuizStuctureComponent } from './quiz-stucture/quiz-stucture.component';
 import { SubmitResultComponent } from './submit-result/submit-result.component';
 import { ResultsComponent } from './results/results.component';
+import { FormsModule } from '@angular/forms';
+
+import { ShareNameService } from 'src/playerName.service';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -29,11 +32,12 @@ const appRoutes: Routes = [
     ResultsComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ShareNameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

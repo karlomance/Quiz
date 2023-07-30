@@ -3,10 +3,11 @@
         <div id="header">
             <div id="name">
                 <label for="name">Enter name:</label>
-                <input id="text-input" type="text" placeholder="Name">
+                <input id="text-input" type="text" placeholder="Name" [(ngModel)]="playerName">
+                
             </div>
             <div  id="button-start">
-                <button id="start-quiz" class="btn btn-primary" (click)="playQuiz()">Go !!!</button>
+                <button id="start-quiz" class="btn btn-primary" (click)="playQuiz(playerName)">Go !!!</button>
             </div>
         </div>
         <div id="footer">
