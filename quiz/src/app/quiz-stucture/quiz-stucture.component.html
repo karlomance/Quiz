@@ -12,9 +12,9 @@
             <h2 id="question-number">1. question:</h2>
             <p id="question">What is the..................... ?</p>
             <div id="options">
-                <input type="checkbox"><span>first option</span><br>
-                <input type="checkbox"><span>second option</span><br>
-                <input type="checkbox"><span>third option</span>
+                <input type="checkbox"><span id="option1">first option</span><br>
+                <input type="checkbox"><span id="option2">second option</span><br>
+                <input type="checkbox"><span id="option3">third option</span>
             </div>
             <div id="buttons-witch-question">
                 <div id="button-previous-div">
@@ -31,7 +31,7 @@
         </div>
         <hr>
         <div id="button-submit">
-            <button class="btn btn-primary" (click)="submitResult()">Submit</button>
+            <button class="btn btn-success" (click)="submitResult()">Submit</button>
         </div>
         <div id="footer">
             <button class="btn btn-danger" (click)="previousPage()">Back</button>

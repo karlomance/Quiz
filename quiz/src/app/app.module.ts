@@ -11,6 +11,7 @@ import { ResultsComponent } from './results/results.component';
 import { FormsModule } from '@angular/forms';
 
 import { ShareNameService } from 'src/playerName.service';
+import { QuestionsService } from './questions.service';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ShareNameService],
+  providers: [ShareNameService, QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

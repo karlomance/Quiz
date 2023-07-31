@@ -18,12 +18,11 @@
     height: 500px; 
 }
 #welcome {
-    margin-left: 250px;
-    width: 300px;
 }
 
 #welcome h1 {
     font-size: 60px;
+    text-align: center;
 }
 #button-start{
     padding-top: 30px;
