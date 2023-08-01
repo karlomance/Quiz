@@ -18,10 +18,20 @@ export class QuestionsService {
     allQuestions(){
         return this.questions
     }
-    randomQuestion(){
+    randomObjectQuestion(){
         const randomIndex = Math.floor(Math.random()* this.questions.length);
         const randomQuestion = this.questions[randomIndex];
         return randomQuestion
+    }
+    listOfRandomObjectQuestions(){
+        const listOfObjectQuestions = [];
+        while(listOfObjectQuestions.length < 5){
+            let randomQuestion = this.randomObjectQuestion();
+            if(!listOfObjectQuestions.includes(randomQuestion)){
+                listOfObjectQuestions.push(randomQuestion);
+            }
+        }
+        return listOfObjectQuestions
     }
 
 

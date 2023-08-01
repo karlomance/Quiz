@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { ShareNameService } from 'src/playerName.service';
 import { QuestionsService } from '../questions.service';
+import { RandomQuestionService } from '../random-question.service';
 
 @Component({
   selector: 'app-quiz-stucture',
@@ -12,57 +13,78 @@ import { QuestionsService } from '../questions.service';
 export class QuizStuctureComponent implements OnInit {
   playerName: string = '';
 
-  constructor(private router: Router, private shareNameService: ShareNameService, private questionService: QuestionsService) {}
+  constructor(private router: Router, private shareNameService: ShareNameService, private questionService: QuestionsService, private randomQuestionService: RandomQuestionService) {}
 
-  ngOnInit(): void {
-    this.playerName = this.shareNameService.getPlayerName()
-    this.firstQuestion()
+  listOfQuestions = this.questionService.listOfRandomObjectQuestions()
+  listOfAnswersPlaces = [];
+  AddListOfAnswersPlaces() {
+    while (this.listOfAnswersPlaces.length < 5){
+      this.listOfAnswersPlaces.push(this.randomQuestionService.generateUniqueRandomNumbers())
+    }
+    return this.listOfAnswersPlaces
+  }
+  
+  count: number = 0;
+  countPlusOne(){
+    if ( this.count < 4 ){
+      this.count += 1;
+    }
+  }
+  countMinusOne(){
+    if ( this.count > 0 ){
+      this.count -= 1;
+    }
   }
 
-  submitResult(){
-    this.router.navigate(['/your-result'])
+  countBooleanPrevious(){
+    if(this.count === 0){
+      return true
+    }
   }
-  previousPage(){
-    this.router.navigate(['/login'])
+  countBooleanNext(){
+    if(this.count === 4){
+      return true
+    }
   }
-  firstQuestion(){
+
+
+  randomQuestion(questionWitchIsInQuestionArray: {id: number, question: string, answer1: string, answer2: string, answer3: string}){
     let p = document.getElementById('question')as HTMLParagraphElement;
     let option1 = document.getElementById('option1')as HTMLSpanElement;
     let option2 = document.getElementById('option2')as HTMLSpanElement;
     let option3 = document.getElementById('option3')as HTMLSpanElement;
 
-    let firstQuestion = this.questionService.randomQuestion();
-    p.innerText = firstQuestion.question;
+    p.innerText = questionWitchIsInQuestionArray.question;
 
-    function generateRandomNumber(min: number, max: number): number{
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function generateUniqueRandomNumbers(count: number, min: number, max: number): number[] {
-      if (max - min + 1 < count) {
-        throw new Error('Unable to generate unique random numbers within the given range.');
-      }
-
-      const uniqueNumbers: number[] = [];
-      while (uniqueNumbers.length < count){
-        const randomNumber = generateRandomNumber(min,max);
-
-        if (!uniqueNumbers.includes(randomNumber)){
-          uniqueNumbers.push(randomNumber);
-        }
-      }
-      return uniqueNumbers
-    }
-      
-    let answersArray: string[] = [firstQuestion.answer1,firstQuestion.answer2,firstQuestion.answer3];
+    let answersArray: string[] = [questionWitchIsInQuestionArray.answer1,questionWitchIsInQuestionArray.answer2,questionWitchIsInQuestionArray.answer3];
     
-    const uniqueRandomNumbers = generateUniqueRandomNumbers(3, 0, 2);
+    const uniqueRandomNumbers = this.AddListOfAnswersPlaces()[this.count];
     let RandomAnswersArray: string[] = [answersArray[uniqueRandomNumbers[0]], answersArray[uniqueRandomNumbers[1]], answersArray[uniqueRandomNumbers[2]]];
       
     option1.innerText = RandomAnswersArray[0];
     option2.innerText = RandomAnswersArray[1];
     option3.innerText = RandomAnswersArray[2];
     
+  }
+
+  ngOnInit(): void {
+    this.playerName = this.shareNameService.getPlayerName()
+    this.randomQuestion(this.listOfQuestions[0])
+  }
+
+
+  
+  generateQuestion(){
+    this.randomQuestion(this.listOfQuestions[this.count]);
+  }
+
+
+
+  submitResult(){
+    this.router.navigate(['/your-result'])
+  }
+  previousPage(){
+    this.router.navigate(['/login'])
   }
 
 }

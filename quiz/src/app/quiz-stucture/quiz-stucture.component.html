@@ -9,7 +9,7 @@
         </div>
         <hr>
         <div id="questions">
-            <h2 id="question-number">1. question:</h2>
+            <h2 id="question-number">{{count + 1}}. question:</h2>
             <p id="question">What is the..................... ?</p>
             <div id="options">
                 <input type="checkbox"><span id="option1">first option</span><br>
@@ -18,10 +18,10 @@
             </div>
             <div id="buttons-witch-question">
                 <div id="button-previous-div">
-                    <button id="button-previous" class="btn btn-default">Previous</button>
+                    <button id="button-previous" class="btn btn-default" [disabled]="countBooleanPrevious()" (click)="countMinusOne()" (click)="generateQuestion()">Previous</button>
                 </div>
                 <div id="button-next-div">
-                    <button id="button-next" class="btn btn-default">Next</button>
+                    <button id="button-next" class="btn btn-default" [disabled]="countBooleanNext()" (click)="countPlusOne()" (click)="generateQuestion()">Next</button>
                 </div>
             </div>
             <!-- <div id="is-correct">
