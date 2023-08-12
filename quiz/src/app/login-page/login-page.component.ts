@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { ShareNameService } from 'src/playerName.service';
+import { NameService } from 'src/app/playerName.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,13 +10,13 @@ import { ShareNameService } from 'src/playerName.service';
 export class LoginPageComponent implements OnInit {
   playerName: string;
 
-  constructor(private router: Router, private shareNameService: ShareNameService) { }
+  constructor(private router: Router, private nameService: NameService) { }
 
   ngOnInit(): void {
   }
 
   playQuiz(playerName: string){
-    this.shareNameService.setPlayerName(playerName);
+    this.nameService.setPlayerName(playerName);
 
 
     this.router.navigate(['/quiz'])

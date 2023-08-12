@@ -1,0 +1,20 @@
+<div id="container">
+    <div id="quiz-container">
+        <div id="header">
+            <div id="username">
+                <p>Username: {{playerName}}</p>
+            </div>
+            <h1>Quiz</h1>
+            <p>You have to answer all this questions right !</p>
+        </div>
+        <hr>
+
+        <app-question-structure></app-question-structure>
+        
+        <div id="footer">
+            <button class="btn btn-danger" (click)="previousPage()">Back</button>
+        </div>
+        
+        
+    </div>
+</div>

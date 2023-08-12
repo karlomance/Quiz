@@ -5,15 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { QuizStuctureComponent } from './quiz-stucture/quiz-stucture.component';
+import { QuizStuctureComponent } from './quiz-structure/quiz-stucture.component';
 import { SubmitResultComponent } from './submit-result/submit-result.component';
 import { ResultsComponent } from './results/results.component';
 import { FormsModule } from '@angular/forms';
 
-import { ShareNameService } from 'src/playerName.service';
+import { NameService } from 'src/app/playerName.service';
 import { QuestionsService } from './questions.service';
+import { RandomNumberService } from './random-numbers.service';
 
 import { Routes, RouterModule } from '@angular/router';
+import { QuestionStructureComponent } from './quiz-structure/question-structure/question-structure.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -31,14 +35,16 @@ const appRoutes: Routes = [
     QuizStuctureComponent,
     SubmitResultComponent,
     ResultsComponent,
+    QuestionStructureComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
-  providers: [ShareNameService, QuestionsService],
+  providers: [NameService, QuestionsService, RandomNumberService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

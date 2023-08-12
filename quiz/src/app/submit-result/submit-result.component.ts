@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ShareNameService } from 'src/playerName.service';
+import { NameService } from 'src/app/playerName.service';
 
 @Component({
   selector: 'app-submit-result',
@@ -11,10 +11,10 @@ import { ShareNameService } from 'src/playerName.service';
 export class SubmitResultComponent implements OnInit {
   playerName: string = '';
 
-  constructor(private router: Router, private sharedNameService: ShareNameService) { }
+  constructor(private router: Router, private nameService: NameService) { }
 
   ngOnInit(): void {
-    this.playerName = this.sharedNameService.getPlayerName()
+    this.playerName = this.nameService.getPlayerName()
   }
 
   previousPage(){
