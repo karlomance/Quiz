@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
-
 import { QuestionsService } from '../../questions.service';
 import { RandomNumberService } from '../../random-numbers.service';
-
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-question-structure',
@@ -25,16 +22,44 @@ export class QuestionStructureComponent implements OnInit {
   radioButtonsForm: FormGroup;
 
   count: number = 0;
-  countPlusOne(){
+  answers:{id: number, answer: string}[] = [];
+
+  ngOnInit(): void {
+    this.addQuestion()
+    this.addOfferedAnswers()
+    
+    this.radioButtonsForm = new FormGroup({
+      'radioOptions': new FormControl(null, Validators.required)
+    })
+    
+  }
+
+  answerCheck(){
+    let newAnswer: {id: number, answer: string} = {id: this.count, answer: this.radioButtonsForm.get('radioOptions').value};
+    let index = this.answers.findIndex(object => object.id === newAnswer.id);
+    if(index !== -1){
+      this.answers[index] = newAnswer;
+    } else {
+      this.answers.push(newAnswer);
+    }
+  }
+  
+  clickNext(){
+    this.answerCheck()
+
     if ( this.count < 4 ){
       this.count += 1;
     }
+    this.radioButtonsForm.reset()
   }
-  countMinusOne(){
+  clickPrevious(){
     if ( this.count > 0 ){
       this.count -= 1;
     }
+    this.answerCheck()
+    this.radioButtonsForm.reset()
   }
+
   countBooleanPrevious(){
     if(this.count === 0){
       return true
@@ -46,37 +71,25 @@ export class QuestionStructureComponent implements OnInit {
     }
   }
 
-
   addQuestion(){
     let p = document.getElementById('question')as HTMLParagraphElement;
     p.innerText = this.listOfQuestions[this.count].question
   }
   addOfferedAnswers(){
-    // let value1 = this.listOfQuestions[this.count].options[this.listOfRandomNumbers[this.count][0]];
-    // let value2 = this.listOfQuestions[this.count].options[this.listOfRandomNumbers[this.count][1]];
-    // let value3 = this.listOfQuestions[this.count].options[this.listOfRandomNumbers[this.count][2]];
-    let values =[
+    let values = [
       this.listOfQuestions[this.count].options[this.listOfRandomNumbers[this.count][0]], 
       this.listOfQuestions[this.count].options[this.listOfRandomNumbers[this.count][1]], 
       this.listOfQuestions[this.count].options[this.listOfRandomNumbers[this.count][2]]
     ];
     
-    // return [value1, value2, value3]
     return values
   }
 
-  ngOnInit(): void {
-    this.addOfferedAnswers()
-    this.addQuestion()
-
-    this.radioButtonsForm = new FormGroup({
-      'radioOptions': new FormControl(null)
-    })
-  }
-  
   submitResult(){
-    this.router.navigate(['/your-result'])
+    this.answerCheck()
+    console.log(this.answers)
+    this.radioButtonsForm.reset()
 
-    console.log(this.radioButtonsForm.get('radioOptions').value)
+    this.router.navigate(['/your-result'])
   }
 }

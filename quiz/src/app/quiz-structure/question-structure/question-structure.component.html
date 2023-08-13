@@ -15,15 +15,15 @@
 
         <div id="buttons-witch-question">
             <div id="button-previous-div">
-                <button type="submit" id="button-previous" class="btn btn-default" [disabled]="countBooleanPrevious()" (click)="countMinusOne()">Previous</button>
+                <button type="submit" id="button-previous" class="btn btn-default" [disabled]="countBooleanPrevious() || !radioButtonsForm.get('radioOptions').valid"  (click)="clickPrevious()">Previous</button>
             </div>
             <div id="button-next-div">
-                <button type="submit" id="button-next" class="btn btn-default" [disabled]="countBooleanNext()" (click)="countPlusOne()">Next</button>
+                <button type="submit" id="button-next" class="btn btn-default" [disabled]="countBooleanNext()  || !radioButtonsForm.get('radioOptions').valid" (click)="clickNext()">Next</button>
             </div>
         </div>
     </div>
     <hr>
     <div id="button-submit">
-        <button class="btn btn-success" type="submit" (click)="submitResult()">Submit</button>
+        <button class="btn btn-success" type="submit" [disabled]="!radioButtonsForm.get('radioOptions').valid" (click)="submitResult()">Submit</button>
     </div>
 </form>
