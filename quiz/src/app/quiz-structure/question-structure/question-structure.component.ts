@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionsService } from '../../questions.service';
 import { RandomNumberService } from '../../random-numbers.service';
+import { SheredAnswersService } from 'src/app/shereAnswers.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -14,7 +15,8 @@ export class QuestionStructureComponent implements OnInit {
   constructor(
     private router: Router, 
     private questionService: QuestionsService, 
-    private randomNumberService: RandomNumberService
+    private randomNumberService: RandomNumberService,
+    private sheredAnswersService: SheredAnswersService
   ) { }
 
   listOfQuestions = this.questionService.listOfRandomQuestions()
@@ -22,6 +24,7 @@ export class QuestionStructureComponent implements OnInit {
   radioButtonsForm: FormGroup;
 
   count: number = 0;
+
   answers:{id: number, answer: string}[] = [];
 
   ngOnInit(): void {
@@ -47,7 +50,7 @@ export class QuestionStructureComponent implements OnInit {
   clickNext(){
     this.answerCheck()
 
-    if ( this.count < 4 ){
+    if ( this.count < (this.listOfQuestions.length - 1) ){
       this.count += 1;
     }
     this.radioButtonsForm.reset()
@@ -66,7 +69,7 @@ export class QuestionStructureComponent implements OnInit {
     }
   }
   countBooleanNext(){
-    if(this.count === 4){
+    if(this.count === (this.listOfQuestions.length - 1)){
       return true
     }
   }
@@ -85,10 +88,15 @@ export class QuestionStructureComponent implements OnInit {
     return values
   }
 
+  answersData: {correctAnswers: string[], userAnswers: string[]} = { correctAnswers: [], userAnswers: [] };
+
   submitResult(){
     this.answerCheck()
-    console.log(this.answers)
     this.radioButtonsForm.reset()
+
+    this.answersData.correctAnswers = this.listOfQuestions.map(question => question.correctAnswer);
+    this.answersData.userAnswers = this.answers.map(question => question.answer);
+    this.sheredAnswersService.sheredData = this.answersData;
 
     this.router.navigate(['/your-result'])
   }

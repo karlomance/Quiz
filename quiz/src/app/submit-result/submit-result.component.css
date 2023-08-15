@@ -24,20 +24,19 @@
 #header h1{
     font-size: 50px;
 }
-#solutions {
-    display: flex;
-}
-#solutions p {
+
+#solutions span {
     font-size: 24px;
 }
 #first-5-questions {
-    flex: 1;
+    font-size: 24px;
     padding-left: 20px;
 }
 #last-5-questions {
-    flex: 1;
+    font-size: 24px;
     padding-left: 20px;
 }
+
 #result {
     text-align: center;
 }

@@ -9,7 +9,7 @@
             <input formControlName="radioOptions" type="radio" name="radioOptions" value="{{addOfferedAnswers()[2]}}"><span>{{addOfferedAnswers()[2]}}</span><br>
         </div> -->
         <div id="options" *ngFor="let value of addOfferedAnswers()">
-            <input formControlName="radioOptions" type="radio" name="radioOptions" value="{{value}}"><span>{{value}}</span><br>
+            <input formControlName="radioOptions" type="radio" name="radioOptions" [ngModel]="answers[count]" [value]="value"><span>{{value}}</span><br>
         </div>
         
 
