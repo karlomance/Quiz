@@ -7,12 +7,14 @@
             <h1>Your Result</h1>
         </div>
         <hr>
-        <div class="container">
-            <div id="solutions" class="row">
-                <div id="first-5-questions" class="col-6" *ngFor="let userAnswer of firstFiveUserAnswers; let i = index">
+        <div id="container-solutions">
+            <div id="solutions-first">
+                <div id="first-5-questions" *ngFor="let userAnswer of firstFiveUserAnswers; let i = index">
                     {{i + 1}}. <span [ngStyle]="{color: checkAnswer(sheredData.userAnswers[i], sheredData.correctAnswers[i])}">{{userAnswer}}</span>
                 </div>
-                <div id="last-5-questions" class="col-6" *ngFor="let userAnswer of lastFiveUserAnswers">
+            </div>
+            <div id="solutions-last">
+                <div id="last-5-questions" *ngFor="let userAnswer of lastFiveUserAnswers; let i = index">
                     {{i + 6}}. <span [ngStyle]="{color: checkAnswer(sheredData.userAnswers[i], sheredData.correctAnswers[i])}">{{userAnswer}}</span>
                 </div>
             </div>

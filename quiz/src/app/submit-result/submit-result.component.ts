@@ -19,7 +19,7 @@ export class SubmitResultComponent implements OnInit {
     this.checkResults()
 
     this.firstFiveUserAnswers = this.sheredData.userAnswers.slice(0, 5);
-    this.lastFiveUserAnswers = this.sheredData.userAnswers.slice(6, 10);
+    this.lastFiveUserAnswers = this.sheredData.userAnswers.slice(5, 10);
   }
 
   playerName: string = '';

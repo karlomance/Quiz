@@ -63,7 +63,7 @@ export class QuestionsService {
     }
     listOfRandomQuestions(){
         const listOfRandomQuestions = [];
-        while(listOfRandomQuestions.length < 5){
+        while(listOfRandomQuestions.length < 8){
             let randomQuestion = this.randomQuestion();
             if(!listOfRandomQuestions.includes(randomQuestion)){
                 listOfRandomQuestions.push(randomQuestion);

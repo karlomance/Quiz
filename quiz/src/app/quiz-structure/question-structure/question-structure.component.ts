@@ -28,13 +28,13 @@ export class QuestionStructureComponent implements OnInit {
   answers:{id: number, answer: string}[] = [];
 
   ngOnInit(): void {
+    console.log(this.listOfQuestions)
     this.addQuestion()
     this.addOfferedAnswers()
     
     this.radioButtonsForm = new FormGroup({
       'radioOptions': new FormControl(null, Validators.required)
     })
-    
   }
 
   answerCheck(){
@@ -49,13 +49,14 @@ export class QuestionStructureComponent implements OnInit {
   
   clickNext(){
     this.answerCheck()
-
     if ( this.count < (this.listOfQuestions.length - 1) ){
       this.count += 1;
     }
+    this.addQuestion()
     this.radioButtonsForm.reset()
   }
   clickPrevious(){
+    this.addQuestion()
     if ( this.count > 0 ){
       this.count -= 1;
     }

@@ -21,7 +21,7 @@ export class RandomNumberService {
     return uniqueNumbers //This returns Array of 3 random numbers.
   }
   ListOfRandomNumberArrays():number [][] {
-    while (this.listOfRandomNumberArrays.length < 5){
+    while (this.listOfRandomNumberArrays.length < (this.questionService.listOfRandomQuestions().length)){
       this.listOfRandomNumberArrays.push(this.randomNumberArray())
     }
     return this.listOfRandomNumberArrays
