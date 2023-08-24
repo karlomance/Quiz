@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { QuestionsService } from '../../questions.service';
 import { RandomNumberService } from '../../random-numbers.service';
 import { SheredAnswersService } from 'src/app/shereAnswers.service';
+import { HttpService } from 'src/app/http.service';
+import { ResultCheckService } from 'src/app/result-check.service';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +20,9 @@ export class QuestionStructureComponent implements OnInit {
     private router: Router, 
     private questionService: QuestionsService, 
     private randomNumberService: RandomNumberService,
-    private sheredAnswersService: SheredAnswersService
+    private sheredAnswersService: SheredAnswersService,
+    private httpService: HttpService,
+    private resultCheckServise: ResultCheckService
   ) { }
 
   listOfQuestions = this.questionService.listOfRandomQuestions()
@@ -26,9 +32,9 @@ export class QuestionStructureComponent implements OnInit {
   count: number = 0;
 
   answers:{id: number, answer: string}[] = [];
+  sheredData: {correctAnswers: string[], userAnswers: string[]} = { correctAnswers: [], userAnswers: [] };
 
   ngOnInit(): void {
-    console.log(this.listOfQuestions)
     this.addQuestion()
     this.addOfferedAnswers()
     
@@ -89,16 +95,19 @@ export class QuestionStructureComponent implements OnInit {
     return values
   }
 
-  answersData: {correctAnswers: string[], userAnswers: string[]} = { correctAnswers: [], userAnswers: [] };
-
   submitResult(){
     this.answerCheck()
     this.radioButtonsForm.reset()
 
-    this.answersData.correctAnswers = this.listOfQuestions.map(question => question.correctAnswer);
-    this.answersData.userAnswers = this.answers.map(question => question.answer);
-    this.sheredAnswersService.sheredData = this.answersData;
+    this.sheredData.correctAnswers = this.listOfQuestions.map(question => question.correctAnswer);
+    this.sheredData.userAnswers = this.answers.map(question => question.answer);
+    this.sheredAnswersService.sheredData = this.sheredData;
+    this.resultCheckServise.setSheredData(this.sheredData);
 
     this.router.navigate(['/your-result'])
+
+
+    //http Post - object {name, result, date}
+    console.log(this.httpService.getObject())
   }
 }

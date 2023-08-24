@@ -15,14 +15,14 @@
             </div>
             <div id="solutions-last">
                 <div id="last-5-questions" *ngFor="let userAnswer of lastFiveUserAnswers; let i = index">
-                    {{i + 6}}. <span [ngStyle]="{color: checkAnswer(sheredData.userAnswers[i], sheredData.correctAnswers[i])}">{{userAnswer}}</span>
+                    {{i + 6}}. <span [ngStyle]="{color: checkAnswer(sheredData.userAnswers[i + 5], sheredData.correctAnswers[i + 5])}">{{userAnswer}}</span>
                 </div>
             </div>
         </div>
         
         <hr>
         <div id="result">
-            <h2>{{checkResults()}} / {{this.sheredData.correctAnswers.length}}</h2>
+            <h2>{{result}} / {{this.sheredData.correctAnswers.length}}</h2>
         </div>
         <div id="buttons">
             <div  id="button-back">

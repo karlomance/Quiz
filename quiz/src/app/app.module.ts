@@ -10,11 +10,6 @@ import { SubmitResultComponent } from './submit-result/submit-result.component';
 import { ResultsComponent } from './results/results.component';
 import { FormsModule } from '@angular/forms';
 
-import { NameService } from 'src/app/playerName.service';
-import { QuestionsService } from './questions.service';
-import { RandomNumberService } from './random-numbers.service';
-import { SheredAnswersService } from 'src/app/shereAnswers.service';
-
 import { Routes, RouterModule } from '@angular/router';
 import { QuestionStructureComponent } from './quiz-structure/question-structure/question-structure.component';
 
@@ -45,12 +40,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule
   ],
-  providers: [
-    NameService, 
-    QuestionsService, 
-    RandomNumberService,
-    SheredAnswersService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
