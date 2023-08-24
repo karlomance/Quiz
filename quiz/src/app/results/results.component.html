@@ -18,22 +18,13 @@
         </div>
         <hr>
 
-        <div id="results-container">
+        <div id="results-container" *ngFor="let result of results">
             <div id="result-1">
-                <div id="username">Karlo</div>
-                <div id="date">28.07.2023.</div>
-                <div id="points">8 / 10</div>
+                <div id="username">{{result.name}}</div>
+                <div id="date">{{result.date}}</div>
+                <div id="points">{{result.result}} / 10</div>
             </div>
-            <div id="result-1">
-                <div id="username">Karlo</div>
-                <div id="date">28.07.2023.</div>
-                <div id="points">8 / 10</div>
-            </div>
-            <div id="result-1">
-                <div id="username">Karlo</div>
-                <div id="date">28.07.2023.</div>
-                <div id="points">8 / 10</div>
-            </div>
+            
 
         </div>
         

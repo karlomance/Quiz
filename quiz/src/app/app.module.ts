@@ -14,6 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { QuestionStructureComponent } from './quiz-structure/question-structure/question-structure.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

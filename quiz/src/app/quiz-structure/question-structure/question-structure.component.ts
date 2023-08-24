@@ -108,6 +108,6 @@ export class QuestionStructureComponent implements OnInit {
 
 
     //http Post - object {name, result, date}
-    console.log(this.httpService.getObject())
+    this.httpService.postRequest();
   }
 }
